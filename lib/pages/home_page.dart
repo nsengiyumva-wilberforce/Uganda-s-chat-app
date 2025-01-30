@@ -1,6 +1,7 @@
 import 'package:chat_app/pages/messages_page.dart';
 import 'package:chat_app/pages/notifications_page.dart';
 import 'package:chat_app/pages/posts_page.dart';
+import 'package:chat_app/pages/services_page.dart';
 import 'package:chat_app/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +29,16 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+    void _goToServicesPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ServicesPage(),
+      ),
+    );
+  }
+  
+
   void _goTochatBox() {
     //final authService = Provider.of<AuthService>(context, listen: false);
     //authService.signOut();
@@ -45,8 +56,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: CircleAvatar(
-          backgroundImage: NetworkImage('https://your-profile-pic-url.com'), // Replace with actual URL or asset
+         leading: GestureDetector(
+          onTap: _goToServicesPage, // Navigate to ServicesPage on tap
+          child: CircleAvatar(
+            backgroundImage: NetworkImage(
+                'https://picsum.photos/200/300'), // Replace with actual URL or asset
+          ),
         ),
         title: _selectedIndex == 0 // Check if on PostsPage
             ? Padding(
